@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet"
+          href="bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet"
+          href="styles/main.css">
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/angular-i18n/angular-locale_hi-in.js"></script>
+    <script type="text/javascript" src="scripts/datepickermodule.js"></script>
+</head>
+<body ng-app="DateModule">
+<md-content layout-wrap="" ng-controller="DateCtrl">
+    <md-datepicker ng-model="dob" md-placeholder="Enter date"
+                   md-min-date="mindate" md-max-date="maxdate"></md-datepicker>
+
+    <md-card-content>
+        <div layout="row">
+        <p>You have Selected  DOB ={{dob| date : "fullDate"}}</p>
+        <p>Total Payment ={{ticketAmount| currency}}</p>
+        </div>
+    </md-card-content>
+    <md-card-content>
+        <div layout="row">
+        <md-input-container>
+            <label>Street Name</label>
+            <input>
+        </md-input-container>
+
+        <md-input-container>
+            <label>State</label>
+            <md-select ng-model="ctrl.userState">
+                <md-option><em>India</em></md-option>
+                <md-option><em>Singapore</em></md-option>
+
+            </md-select>
+         </md-input-container>
+         </div>
+    </md-card-content>
+
+</md-content>
+
+
+<md-grid-list  md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
+               md-row-height-gt-md="1:1" md-row-height="2:2"
+               md-gutter="12px" md-gutter-gt-sm="8px">
+    <md-grid-tile class="green"  md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
+        <md-grid-tile-header>
+
+        </md-grid-tile-header>
+        <md-grid-tile-footer>
+
+        </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile class="red"  md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
+        <md-grid-tile-header>
+
+        </md-grid-tile-header>
+        <md-grid-tile-footer>
+
+        </md-grid-tile-footer>
+    </md-grid-tile>
+
+</md-grid-list>
+
+
+
+
+
+</body>
+</html>
