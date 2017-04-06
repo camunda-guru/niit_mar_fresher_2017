@@ -13,44 +13,22 @@ describe('Service Library Test Suite',function()
            inject(function ($injector, $httpBackend) {
                service = $injector.get('stateService');
                httpBackend = $injector.get('$httpBackend');
+
            })
 
        })
 
     it('should contain a response having length >0 in  from mock StateService',function()
     {
-        httpBackend.whenGET("https://www.whizapi.com/api/v2/util/ui/in/indian-states-list?project-app-key=vlubq5he9ngkiikqroseoxsf").respond({
-           states: [
-                    {
-                        data: {
-                            stateName: "TamilNadu"
-                        }
-                    },
-                    {
-                        data: {
-                            stateName: "Kerala"
-                        }
-                    },
-                    {
-                        data: {
-                            stateName: "Karnataka"
-                        }
-                    },
-                    {
-                        data: {
-                            stateName: "AP"
-                        }
-                    }
-                ]
 
-        });
+        var httpResponse = [{ "stateName": "TN" }, { "stuffId": "AP" }];
+        httpBackend.expectGET("https://www.whizapi.com/api/v2/util/ui/in/indian-states-list?project-app-key=vlubq5he9ngkiikqroseoxsf").respond(200, httpResponse);
 
         service.stateServiceObj().then(function(response) {
-            console.log(response.states[0].data.stateName);
-            expect(response.states[0].data).toEqual("TamilNadu");
-            $httpBackend.flush();
-        });
 
+            expect(response[0].data.stateName).toBe("AP");
+
+        });
 
         /*
         service.stateServiceObj().then(function(response) {
