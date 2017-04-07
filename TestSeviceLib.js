@@ -64,7 +64,8 @@ describe('Service Library Test Suite',function()
 describe('Service Library Test Suite',function()
 {
     var scope = {};
-    var service,httpBackend;;
+
+    var service,httpBackend,rootScope;
 
     beforeEach(function()
     {
@@ -73,6 +74,7 @@ describe('Service Library Test Suite',function()
         inject(function ($injector, $httpBackend) {
             service = $injector.get('addStateService');
             httpBackend = $injector.get('$httpBackend');
+            rootScope = $injector.get('$rootScope');
 
         })
 
@@ -82,21 +84,24 @@ describe('Service Library Test Suite',function()
     {
 
         var states = [{ "stateName": "TN" }, { "stuffId": "AP" }];
-        httpBackend.whenPOST('https://localhost:3000/wonderlust/addState')
-            .respond(function(method, url, data) {
-            var state = angular.fromJson(data);
-            states.push(state);
-            return [200, state, {}];
-        });
-
-
-
         var obj={
             stateName:"KN"
         }
 
-        httpBackend.expect('POST', 'https://localhost:3000/wonderlust/addState', obj)
-            .respond({stateName:"KN"});
+
+        httpBackend.whenPOST('https://localhost:3000/wonderlust/addState',obj).respond(obj);
+        var deferredResponse =  service.addStateServiceObj();
+        var stateData;
+        deferredResponse.then(function(response){
+
+            stateData = response.data;
+
+        });
+
+        httpBackend.flush();
+
+        expect(obj).toEqual(stateData);
+
     })
 
 
