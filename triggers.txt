@@ -1,0 +1,14 @@
+CREATE
+	TRIGGER `blog_after_insert` AFTER INSERT 
+	ON `blog` 
+	FOR EACH ROW BEGIN
+	
+		IF NEW.deleted THEN
+			SET @changetype = 'DELETE';
+		ELSE
+			SET @changetype = 'NEW';
+		END IF;
+    
+		INSERT INTO audit (blog_id, changetype) VALUES (NEW.id, @changetype);
+		
+    END$$
