@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context  path="/jndiDS" docBase="jndiDS" debug="0" reloadable="true">
+
+<Resource  name="jdbc/mydb" 
+    auth="Container" 
+    type="javax.sql.DataSource" 
+    maxActive="100" 
+    maxIdle="30" 
+    username="root" 
+    maxWait="10000" 
+    driverClassName="com.mysql.jdbc.Driver" 
+    password="vignesh"   
+    url="jdbc:mysql://localhost:3306/nessu"/> 
+ 
+ 
+</Context>
