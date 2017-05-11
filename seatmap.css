@@ -1,0 +1,45 @@
+
+section
+{
+	width:40%;
+	height:820px;
+	margin-left: 20%;
+	margin-top: 10%;
+	border:2px solid blue; 
+	border-radius: 125px 125px 125px 125px;
+	
+}
+
+#leftwing
+{
+    margin-left:12%;
+	width:30%;
+	float:left;
+	margin-top: 3%;
+	
+}
+#middletier
+{
+	width:15%;
+	float:left;
+	height:760px;
+	border: 2px solid green;
+	margin-left: -1%;
+	margin-top: 8%;
+}
+#rightwing
+{
+	width:30%;
+	float:left;
+	margin-top: 3%;
+}
+.btn
+{
+	width:30%;
+	height:25px;
+
+margin-bottom:5%;
+	background-color: lightblue;
+	
+	
+}
